@@ -2,6 +2,9 @@ var gulp    = require('gulp'),
     config  = require('./gulp/config.json'),
     plugins = require('gulp-load-plugins')();
 
+// JADE Compliation
+require(config.tasksPath + '/jade')(gulp, plugins, config);
+
 // SASS Compliation
 require(config.tasksPath + '/sass')(gulp, plugins, config);
 

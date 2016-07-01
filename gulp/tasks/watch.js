@@ -6,6 +6,8 @@ module.exports=function(gulp,plugins,config){
 
         gulp.watch(config.source.css+'/**/*.css', ['concatCSS']);
 
+        gulp.watch(config.source.jade+'/**/*.jade', ['jade']);
+
     });
 };
 
