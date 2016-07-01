@@ -8,21 +8,38 @@ there.
 */
 
 /* Larger than mobile */
-@media (min-width: 400px) {}
+@media (min-width: 400px) {
+}
 
 /* Larger than phablet (also point when grid becomes active) */
-@media (min-width: 550px) {}
+@media (min-width: 550px) {
+}
 
 /* Larger than tablet */
 @media (max-width: 1000px) {
-    .user-input {width: 95%; margin-bottom: 15px;}
-    button {width: 95%; margin-top: 5px;}
-    .spiffy {text-align: center;}
-    .algorithm-notes {text-align: left;}
+   .user-input {
+      width: 95%;
+      margin-bottom: 15px;
+   }
+
+   button {
+      width: 95%;
+      margin-top: 5px;
+   }
+
+   .spiffy {
+      text-align: center;
+   }
+
+   .algorithm-notes {
+      text-align: left;
+   }
 }
 
 /* Larger than desktop */
-@media (min-width: 1000px) {}
+@media (min-width: 1000px) {
+}
 
 /* Larger than Desktop HD */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}
