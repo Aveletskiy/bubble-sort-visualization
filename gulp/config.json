@@ -1,0 +1,26 @@
+{
+  "source": {
+    "html":"./src/html",
+    "jade":"./src/jade",
+    "css":"src/css",
+    "sass":"src/sass",
+    "less":"./src/less",
+    "js":"./src/js",
+    "coffee":"./src/coffee",
+    "typescript":"./src/typing",
+    "img":"./src/img"
+  },
+  "destination":{
+    "html":"./dist/html",
+    "css":"./dist/css",
+    "js":"./dist/js",
+    "img":"./dist/img",
+    "fonts": "./dist/fonts"
+  },
+  "root": ".",
+  "browserList":{
+    "browsers":["> 1%", "last 2 versions", "Firefox ESR", "Opera 12.1"],
+    "cascade": false
+  },
+  "tasksPath":"./gulp/tasks"
+}
