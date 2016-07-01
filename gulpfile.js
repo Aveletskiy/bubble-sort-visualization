@@ -17,12 +17,14 @@ require(config.tasksPath + '/minify-css')(gulp, plugins, config);
 // Move js scripts
 require(config.tasksPath + '/moveSripts')(gulp, plugins, config);
 
+// Clean css files from src
+require(config.tasksPath + '/clean')(gulp, plugins, config);
+
 // Watch Task
 require(config.tasksPath + '/watch')(gulp, plugins, config);
 
 
-
 // Default Task Triggers Watch
 gulp.task('default', function() {
-    gulp.start('watch');
+    gulp.start('jade','clean','sass','concatCSS','watch');
 });
