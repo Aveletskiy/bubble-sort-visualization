@@ -1,6 +1,6 @@
 module.exports = function (gulp, plugins, config) {
     gulp.task('jade', function() {
-        gulp.src(config.source.jade+'/**/*.jade')
+        gulp.src(config.source.jade+'/index.jade')
             .pipe(plugins.jade({
                 pretty: true
             }))

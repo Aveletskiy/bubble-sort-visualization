@@ -1,0 +1,50 @@
+.container
+    .row
+        .twelve.columns.lesson-node
+            h3 Bubble sort
+            p
+                | Description: Given an array with multiple random numbers,
+                | write a program that will sort the numbers (with the smallest
+                | number on the left and the largest number on the right),
+                | using the bubble sort method. Toggle the drop-down menus
+                | below to set the size of the array (i.e. how many numbers
+                | it contains) and the range for how big your numbers will be.
+                | Watch as bubble sort works it's magic!
+            form.userInput-dropdowns
+                .row
+                    .six.columns
+                        label Array Lenght
+                        select.u-full-width#arrayLength-7
+                           - var cnt = 50
+                           - var n = 0
+                           while n <= cnt
+                                - if (n == 0)
+                                    option(value=n) Choosess a length...
+                                    - n+=5
+                                - else
+                                    option(value=n) #{n}
+                                    - n+=5
+
+                    .six.columns
+                        label Range
+                        select.u-full-width#arrayRange-7
+                            - var cnt = 10000
+                            - var n = 1
+                            while n <= cnt
+                                - if (n == 1)
+                                    option(value=n) Choose a range...
+                                    - n*=10
+                                - else
+                                    option(value=n) From 1 to #{n}
+                                    - n*=10
+
+            button(onclick="bubbleSort('#algorthim-10')").button-primary
+                | Run  Algorithm
+            button.button-primary.show-hide
+                |Toggle Notes
+            button.clear Clear
+            br
+            br
+
+            // print algorithm
+            .output#algorthim-10

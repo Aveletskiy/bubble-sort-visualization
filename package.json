@@ -1,5 +1,5 @@
 {
-  "name": "Tenzor task",
+  "name": "BubbleSort",
   "version": "0.0.1",
   "description": "Задание для Тензор",
   "author": "Alex Maliniwskiy (ixus.van.axel@gmail.com)",
@@ -15,9 +15,6 @@
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
-    "gulp-watch": "^4.3.5",
-    "node-font-awesome": "^1.0.2",
-    "require-dir": "^0.3.0",
-    "tiny-lr": "^0.2.1"
+    "gulp-watch": "^4.3.5"
   }
 }

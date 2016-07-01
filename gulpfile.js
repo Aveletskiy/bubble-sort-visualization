@@ -24,5 +24,5 @@ require(config.tasksPath + '/watch')(gulp, plugins, config);
 
 // Default Task Triggers Watch
 gulp.task('default', function() {
-    gulp.start('watch');
+    gulp.start('jade','sass','concatCSS','watch');
 });
