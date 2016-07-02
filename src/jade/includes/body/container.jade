@@ -19,11 +19,11 @@
                      - var n = 0
                      while n <= cnt
                         - if (n == 0)
-                        option(value=n) Choosess a length...
-                        - n+=5
+                           option(value=n) Choosess a length...
+                           - n+=5
                         - else
-                        option(value=n) #{n}
-                        - n+=5
+                           option(value=n) #{n}
+                           - n+=5
 
                .six.columns
                   label Range
@@ -32,19 +32,19 @@
                      - var n = 1
                      while n <= cnt
                         - if (n == 1)
-                        option(value=n) Choose a range...
-                        - n*=10
+                           option(value=n) Choose a range...
+                           - n*=10
                         - else
-                        option(value=n) From 1 to #{n}
-                        - n*=10
+                           option(value=n) From 1 to #{n}
+                           - n*=10
 
-         button(onclick="bubbleSort('#algorthim-10')").button-primary
+         button.button-primary#start
             | Run  Algorithm
          button.button-primary.show-hide
             | Toggle Notes
          button.clear Clear
          br
          br
-
+         #bubble
          // print algorithm
          .output#algorthim-10

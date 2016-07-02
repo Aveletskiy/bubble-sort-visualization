@@ -1,0 +1,6 @@
+{
+  "compileOptions":{
+    "module":"system",
+    "target": "es5"
+  }
+}
