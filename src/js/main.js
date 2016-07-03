@@ -99,19 +99,19 @@ VisualArrayClass.prototype.doCompareAnimation = function (id1, id2) {
             temp.event.shift();
             if (temp.event.length) {
 
-               if (temp.event[0].event === 'doCompareAnimation') {
+               if (temp.event[0].event == 'doCompareAnimation') {
                   temp.doCompareAnimation(temp.event[0].id1, temp.event[0].id2)
                }
-               if (temp.event[0].event === 'doSwapAnimation') {
+               if (temp.event[0].event == 'doSwapAnimation') {
                   temp.doSwapAnimation(temp.event[0].id1, temp.event[0].id2)
                }
-               if (temp.event[0].event === 'end') {
-                  temp.SetDefaultStyleAttributes();
+               if (temp.event[0].event == 'finish') {
+                  temp.setDefaultStyleAttributes();
                }
             }
          }
       });
-   this.text.transition().duration(this.compareAnimationDuration)
+   temp.text.transition().duration(temp.compareAnimationDuration)
       .attr("dy", function (d, i) {
          return (i == temp.index[id1] || i == temp.index[id2]) ? 50+7 : 75+5
       })
@@ -126,8 +126,8 @@ VisualArrayClass.prototype.doCompareAnimation = function (id1, id2) {
       })
       };
 
-   /** @method  SetDefaultStyleAttributes*/
-   VisualArrayClass.prototype.SetDefaultStyleAttributes = function () {
+   /** @method  setDefaultStyleAttributes*/
+   VisualArrayClass.prototype.setDefaultStyleAttributes = function () {
       this.circle.transition().duration(this.compareAnimationDuration)
          .attr(this.defaultCircleStylling);
       this.text.transition().duration(this.compareAnimationDuration)
@@ -154,11 +154,16 @@ VisualArrayClass.prototype.doCompareAnimation = function (id1, id2) {
             count += 1;
             temp.event.shift();
             if (temp.event.length) {
-               if (temp.event[0].event === 'doCompareAnimation') {
-                  temp.doCompareAnimation(temp.event[0].id1, temp.event[0].id2)
-               } else {
-                  temp.doSwapAnimation(temp.event[0].id1, temp.event[0].id2)
+               if (temp.event[0].event == 'doCompareAnimation'){
+                  temp.doCompareAnimation(temp.event[0].id1, temp.event[0].id2);
                }
+               if (temp.event[0].event == 'doSwapAnimation'){
+                  temp.doSwapAnimation(temp.event[0].id1, temp.event[0].id2);
+               }
+               if (temp.event[0].event == 'finish'){
+                  temp.setDefaultStyleAttributes()
+               }
+
             }
          }
       })
@@ -180,14 +185,13 @@ VisualArrayClass.prototype.doCompareAnimation = function (id1, id2) {
             }
          }
          if (flag) {
-            this.event.push({event: 'end', id1: null, id2: null});
             break;
          }
       }
+      this.event.push({event: 'finish'});
       if (this.event.length) {
          this.doCompareAnimation(this.event[0].id1, this.event[0].id2);
       }
-
    };
 
    /** @function  generateRandomShuffledArray*/
@@ -242,9 +246,6 @@ VisualArrayClass.prototype.doCompareAnimation = function (id1, id2) {
             $('#start').attr("disabled", true);
          }
          catch (err) {
-            if (err)
-               showErrorMessage('.output', err);
-            else
                showErrorMessage('.output', "Oops! You forgot construct array!");
          }
       });
