@@ -141,51 +141,6 @@ input[type="button"].button-primary:focus {
   background-color: #1EAEDB;
   border-color: #1EAEDB;
 }
-.array {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: inherit;
-  right: inherit;
-}
-
-circle.cirl {
-  border-radius: 50%;
-  position: relative;
-  background-color: #b5a53b;
-  width: 40px;
-  height: 40px;
-  float: left;
-  margin: 5px;
-}
-
-.right {
-  border-radius: 50%;
-  position: relative;
-  background-color: #abc;
-  width: 40px;
-  height: 40px;
-  float: left;
-  margin: 5px;
-}
-
-.left {
-  border-radius: 50%;
-  position: relative;
-  background-color: #cba;
-  width: 40px;
-  height: 40px;
-  float: left;
-  margin: 5px;
-}
 @charset "UTF-8";
 
 /* Clearing
@@ -315,6 +270,14 @@ label > .label-body {
   display: inline-block;
   margin-left: .5rem;
   font-weight: normal;
+}
+.github-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  width: 149px;
+  height: 149px;
 }
 @charset "UTF-8";
 

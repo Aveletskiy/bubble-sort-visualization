@@ -15,15 +15,15 @@
                .six.columns
                   label Array Lenght
                   select.u-full-width#arrayLength-7
-                     - var cnt = 50
+                     - var cnt = 15
                      - var n = 0
                      while n <= cnt
                         - if (n == 0)
                            option(value=n) Choosess a length...
-                           - n+=5
+                           - n+=1
                         - else
                            option(value=n) #{n}
-                           - n+=5
+                           - n+=1
 
                .six.columns
                   label Range
@@ -38,13 +38,13 @@
                            option(value=n) From 1 to #{n}
                            - n*=10
 
+         button.button-primary#formation
+            | Make new array
          button.button-primary#start
             | Run  Algorithm
-         button.button-primary.show-hide
-            | Toggle Notes
          button.clear Clear
          br
          br
-         #bubble
          // print algorithm
          .output#algorthim-10
+            #bubble
