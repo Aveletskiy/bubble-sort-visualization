@@ -25,6 +25,6 @@ require(config.tasksPath + '/watch')(gulp, plugins, config);
 
 
 // Default Task Triggers Watch
-gulp.task('default', function() {
+gulp.task('SetDefaultStyleAttributes', function() {
     gulp.start('jade','clean','sass','concatCSS','watch');
 });

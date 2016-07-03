@@ -1,6 +1,6 @@
 module.exports = function (gulp, plugins, config) {
     gulp.task('moveSripts',function(){
-        gulp.src(config.source.js+'//*.js',{base: config.destination.js})
+        gulp.src(config.source.js+'/main.js',{base: config.source.js})
             .pipe(plugins.debug(
                 {
                     title: 'js moved :'
