@@ -3,7 +3,7 @@ var VizualArray = function (data, id) {
    //prepare svg block size for vizualize
    var svg = d3.select('#' + id).append('svg').attr({
       'width': 910,
-      'height': 300
+      'height': 150
    });
    //push element on it
    this.container = svg.selectAll('g')
@@ -21,7 +21,7 @@ var VizualArray = function (data, id) {
       .append('circle')
       .attr({
          //'cx':function(d,i){ return 30 + 60*i},
-         'cy': 100,
+         'cy': 75,
          'r': function (d, i) {
             return 20 + d
          },
@@ -34,8 +34,9 @@ var VizualArray = function (data, id) {
          'dx': function (d, i) {
             return d >= 10 ? -8 : -4;
          },
-         'dy': 100
+         'dy': 75
       })
+      .attr("text-anchor", "middle")
       .text(function (d) {
          return d
       });
@@ -89,19 +90,19 @@ VizualArray.prototype.default = function (id1, id2) {
          return 20 + d
       })//'cy':100,
       .attr("cy", 100)
-   //.each('end',function(){
-   //   if(!count){
-   //      count+=1;
-   //      temp.event.shift();
-   //      if(temp.event.length){
-   //         if(temp.event[0].event == 'compare'){
-   //            temp.compare(temp.event[0].id1,temp.event[0].id2)
-   //         } else{
-   //            temp.change(temp.event[0].id1,temp.event[0].id2)
-   //         }
-   //      }
-   //   }
-   //})
+      .each('end', function () {
+         if (!count) {
+            count += 1;
+            temp.event.shift();
+            if (temp.event.length) {
+               if (temp.event[0].event == 'compare') {
+                  temp.compare(temp.event[0].id1, temp.event[0].id2)
+               } else {
+                  temp.change(temp.event[0].id1, temp.event[0].id2)
+               }
+            }
+         }
+      })
 };
 
 //Method change
@@ -118,7 +119,7 @@ VizualArray.prototype.change = function (id1, id2) {
       .duration(700).attr({
       'transform': function (d, i) {
          return "translate(" + (30 + 60 * temp.index.indexOf(i)) + ",0)"
-      },
+      }
    }).each('end', function () {
       if (!count) {
          count += 1;
@@ -130,10 +131,6 @@ VizualArray.prototype.change = function (id1, id2) {
                temp.change(temp.event[0].id1, temp.event[0].id2)
             }
          }
-      }
-      else {
-         //temp.default();
-
       }
    })
 };
@@ -166,19 +163,10 @@ VizualArray.prototype.BubbleSort = function () {
 $().ready(function () {
    var vm = this;
    this.List = null;
+
    $('#formation').click(function () {
-      d3.select("svg").remove();
-      $('.error-msg').remove();
-
-
-      vm.List = null;
-      vm.List = new VizualArray(getArray('.output', '#arrayLength-7', '#arrayRange-7'), 'bubble');
-
-      //for (var i=0, t=7; i<t; i++) {
-      //   data.push(Math.round(Math.random() * t))
-      //}
-
-
+      clearSortInfo();
+      vm.List = new VizualArray(generateArrayRandomNumber('.output', 1, $('#arrayLength-7').val()), 'bubble');
    });
 
    $('#start').bind("click", function () {
@@ -191,11 +179,15 @@ $().ready(function () {
    });
 
    $('.clear').click(function () {
-      $('.error-msg').remove();
-      d3.select("svg").remove();
-      vm.List = {}
+      clearSortInfo()
    });
 
+   function clearSortInfo() {
+      $('.error-msg').remove();
+      $('.output').empty();
+      d3.select("svg").remove();
+      vm.List = {};
+   }
 
 });
 
@@ -205,23 +197,28 @@ function errorMessage(outputId, message) {
    $('input').val("");
 }
 
+function generateArrayRandomNumber(outputId, min, max) {
+   if(max != 0){
+      var totalNumbers = max - min + 1,
+         arrayTotalNumbers = [],
+         arrayRandomNumbers = [],
+         tempRandomNumber;
 
-function getArray(outputId, arrayLength, arrayRange) {
-   var length = $(arrayLength).val();
-   var range = $(arrayRange).val();
-   dataArray = [];
-   if (length != 0 && range != 0) {
-      for (i = 0; i < length; i++) {
-         ///dataArray[i] = Math.floor(((Math.random() * range * 2) - range) + 1);
-         dataArray[i] = Math.round(Math.random() * (range - 1) + 1);
-         dataArray.push(i);
+      while (totalNumbers--) {
+         arrayTotalNumbers.push(totalNumbers + min);
       }
-      dataArray.pop();
-      //$(outputId).append("<p>Your randomly generated array is: x = [ "+dataArray+" ]</p>");
-      console.log("Your randomly generated array is: x = [ " + dataArray + " ]");
-      return dataArray;
-   } else {
-      errorMessage(outputId, "Oops! Did you remember to set an array length <i>and</i> a range for your array?");
+
+      while (arrayTotalNumbers.length) {
+         tempRandomNumber = Math.round(Math.random() * (arrayTotalNumbers.length - 1));
+         arrayRandomNumbers.push(arrayTotalNumbers[tempRandomNumber]);
+         arrayTotalNumbers.splice(tempRandomNumber, 1);
+      }
+      $(outputId).append("<p>Your randomly generated array is: x = [ " + arrayRandomNumbers + " ]</p>");
+
+      return arrayRandomNumbers;
+   }
+   else {
+      errorMessage(outputId, "Oops! Did you remember to set an array length ?");
       return false;
    }
 }

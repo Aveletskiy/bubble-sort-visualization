@@ -15,7 +15,7 @@
                .six.columns
                   label Array Lenght
                   select.u-full-width#arrayLength-7
-                     - var cnt = 15
+                     - var cnt = 10
                      - var n = 0
                      while n <= cnt
                         - if (n == 0)
@@ -25,18 +25,6 @@
                            option(value=n) #{n}
                            - n+=1
 
-               .six.columns
-                  label Range
-                  select.u-full-width#arrayRange-7
-                     - var cnt = 10000
-                     - var n = 1
-                     while n <= cnt
-                        - if (n == 1)
-                           option(value=n) Choose a range...
-                           - n*=10
-                        - else
-                           option(value=n) From 1 to #{n}
-                           - n*=10
 
          button.button-primary#formation
             | Make new array
@@ -47,4 +35,4 @@
          br
          // print algorithm
          .output#algorthim-10
-            #bubble
+         #bubble
